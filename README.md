@@ -18,7 +18,7 @@ Perfect for small educational projects, prototypes, simple games, simulations, o
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR-USERNAME/RGame.git
+git clone https://github.com/mrgyularabai/RGame.git
 cd RGame
 
 # (optional) Create virtual environment
