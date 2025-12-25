@@ -103,3 +103,41 @@ RGame provides several convenient classes that create visual objects on the scre
       color="yellow",
       name="PlayerBall"
   )
+
+
+## Why RGame?
+
+- **Educational**  
+  Perfect for learning how game loops, multithreading, event systems, and object-oriented game architecture work under the hood.
+
+- **No Dependencies**  
+  Built entirely on Python’s standard library (only requires `tkinter` and `decimal`). No external packages needed.
+
+- **Lightweight & Fast to Start**  
+  Ideal for small projects, prototypes, classroom demos, Raspberry Pi, or low-end hardware.
+
+- **Precise Math**  
+  Uses Python’s `decimal.Decimal` for all vector calculations — avoids floating-point precision errors common in games and simulations.
+
+- **Clean Architecture**  
+  Simple script-based structure with separated physics and rendering loops makes code easy to read and maintain.
+
+- **Built-in Error Handling**  
+  Failsafe system prevents crashes from exceptions in physics or render ticks — great for experimentation.
+
+## Limitations
+
+Tkinter is not hardware-accelerated → not suitable for high-performance games
+Rendering capped at ~10–15 FPS by default (Python + Tkinter limitation)
+No built-in sound or advanced collision detection (but easy to add)
+
+## Contributing
+Contributions welcome! Especially:
+
+New appearance types (polygon, arc, etc.)
+Better documentation/examples
+Collision system
+Particle system
+
+## License
+MIT License – feel free to use, modify, and distribute.
