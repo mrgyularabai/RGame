@@ -1,0 +1,50 @@
+Comprehensive Version
+--------------------------------------
+MainPhysics is what make your physics work. It is can be accessed
+with self.MainPhysics from everywhere.
+
+You can do these things:
+
+    These if possible should be replaced with Script.Activated, Script.Activate and, Script.Deactivate.
+    self.MainPhysics.Exists(x): x is "self." the name of a variable which stores a Script.
+            This checks if the script is doing PhysicsTick.
+
+    self.MainPhysics.Add(x): x is "self." the name of a variable which stores a Script.
+            This makes the script start doing PhysicsTick. Only do this if 
+            self.MainPhysics.Exists(x) is False
+
+    self.MainPhysics.Remove(x):  x is "self." the name of a variable which stores a Script.
+            This makes the script stop doing PhysicsTick. Only do this if 
+            self.MainPhysics.Exists(x) is True
+    
+You have these variables which are made by default:
+    Interval: how long before next PhysicsTick.
+    FailedTickFailsafe: How many errors does it accept before crashing (set to 0 to disable crashing).
+    FailedTickCount: How many errors have occurred during PhysicsTick
+    Running: (Read only) returns wether still running
+    Counter: (Read only) returns how many times did PhysicsTick happen
+    DeltaTime: (Read only) returns how much time has passed since last PhysicsTick
+
+Concise Version
+--------------------------------------
+MainPhysics handles the physics event loop(on a separate thread). 
+It is can be accessed by the attribute self.MainPhysics in every script.
+
+Deprecated: use Script.Activated, Script.Activate() and, Script.Deactivate() when possible instead of the methods below
+
+These are its available methods:
+
+    self.MainPhysics.Exists(x): x is of type RG_Script. Returns a boolean value which
+            indicates if a script is subscribed or not to this event loop.
+
+    self.MainPhysics.Add(x): x is of type RG_Script. Subscribes x to event loop.
+
+    self.MainPhysics.Remove(x):  x is of type RG_Script. Unsubscribes x to event loop.
+    
+You have these variables which are made by default:
+    Interval: interval between physics ticks in seconds.
+    FailedTickFailsafe: How the amount of exceptions accepted (set to 0 to accept all exceptions).
+    FailedTickCount: The amount of exceptions occurred during PhysicsTick.
+    Running: (Read only) returns wether event loop has been broken
+    Counter: (Read only) returns the number of times PhysicsTick was called globally
+    DeltaTime: (Read only) returns the time elapsed in terms of MainPhysics.Interval since last PhysicsTick started.

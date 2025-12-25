@@ -1,0 +1,60 @@
+Comprehensive Version
+--------------------------------------
+MainScript is where everything is stored so you can access everything with "self."
+then the variable name. If you are not in MainScript then you must use "self.MainScript"
+to access most things.
+
+You can put your code into 3 places:
+
+    - Main: This is what happens straight after everything is set up.
+            The window and physics is not running yet. This is where you
+            change settings like MainPhysics.PhysicsMode or MainWindow.WindowHeight
+
+    - PhysicsTick: This is what happens every step of the simulation. Put code here
+            like movement. What you do here does not affect the responsiveness of the
+            window but it does effect the speed at which objects positions on the 
+            screen can be refreshed - by default it happens 20x a second so python has
+            enough time to draw everything out onto the screen. deltatime is the amount
+            of time which passed since the last tick.
+    
+    - Render: This happens before the graphics are refreshed on the screen. This
+            happens 10x every second by default because python is not fast enough to
+            be able to handle more. You put code to update your scripts appearances
+            here.
+
+You can do one thing:
+    - End: Quits form application (can't do this in Main)
+
+You have three variables which are made by default:
+    MainPhysics: This handles the physics.
+    MainWindow: This handles drawing things out to the screen.
+    FrameRate.Value: This is where you can modify the frame rate of the window
+
+Concise Version
+--------------------------------------
+This is the universal class containing everything. 
+This means that you can access everything from here.
+This class must be contained in MainScript.py
+The class must inherit from MainScr
+There are 4 functions which can be overloaded by the user:
+
+    - Before: Called before anything has happened. Cannot access any variable except Stop and Started
+              If you set Stop to True it will close the app after this function was executed.
+    
+    - Main: Called after initialization, before the event loops are started. MainWindow's setup 
+            variables can only be set here and MainPhysics's PhysicsMode
+
+    - PhysicsTick: Each physics event loop iteration. 'deltatime' is the amount of time elapsed since
+            the last iteration started in terms of the specified interval of second - 0.05 by default.
+            Position displayed on screen after this method is executed. Runs on a separate thread from
+            Main.
+
+    - Render: Each render event loop iteration. Graphics updated after this method has executed. Runs 
+            on a separate thread from Main and Script.Appearance attributes' rendering is distributed 
+            to a Thread Pool for execution.
+1 method to be called:
+    - End: Quits form application (don't call from Main)
+3 public properties:
+    MainPhysics: This handles the physics.
+    MainWindow: This handles drawing things out to the screen.
+    FrameRate.Value: This is where you can modify the frame rate of the window

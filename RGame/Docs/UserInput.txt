@@ -1,0 +1,96 @@
+Comprehensive Version
+--------------------------------------
+User input or UI is when we detect input from the user and act on it.
+At the moment the two ways this is possible is through keyboard and mouse.
+
+The mouse's input can be accessed through self.MainWindow.Mouse
+    
+You can do these with MainWindow.Mouse:
+    BindLeftDown(x):   x is a function. This makes x happen when the left mouse button is pressed down.
+    BindLeftUp(x):     x is a function. This makes x happen when the left mouse button is released.
+    BindMiddleDown(x): x is a function. This makes x happen when the middle mouse button (scroll wheel) is pressed down.
+    BindMiddleUp(x):   x is a function. This makes x happen when the middle mouse button (scroll wheel) is released.
+    BindRightDown(x):  x is a function. This makes x happen when the right mouse button is pressed down.
+    BindRightUp(x):    x is a function. This makes x happen when the right mouse button is released.
+    BindDoubleClick(x):x is a function. This makes x happen when there is a double click.
+    BindMove(x):       x is a function. This makes x happen when the mouse moves above the window.
+    BindDrag(x):       x is a function. This makes x happen when the mouse moves above the window and the left mouse button is held down.
+
+Here are the variables of MainWindow.Mouse:
+    Left:   if the left mouse button is pressed down then True.
+    Middle: if the middle mouse button is pressed down then True.
+    Right:  if the right mouse button is pressed down then True.
+    Drag:   if the left mouse button is pressed down and is moving.
+    ScrollDelta: The amount the mouse wheel position changed when over the window.
+    DoubleClickDelta: The maximum amount of time between clicks in a double click.
+    DragDeltaMovement: The minimum distance moved for a Drag event.
+
+The keyboard can be accessed through bindkeys and events.
+
+For Example this is a little code for movement(if you press the up arrow it moves up):
+
+def Main(self):
+    self.Ball = RG_Circle(self)
+    self.MainWindow.Bind("<Up>", self.MoveUp) 
+    self.MainWindow.Bind("<KeyRelease-Up>", self.StopMoveUp)
+
+def MoveUp(self, args):
+    self.Ball.Velocity.Y = 1
+
+def StopMoveUp(self, args):
+    if self.Ball.Velocity.Y == 1 :
+        self.Ball.Velocity.Y = 0
+
+Here is how to do it:
+    MainWindow.Bind(x,y): x is a valid bindkey. y is a function with an "args" argument.
+
+Special keys are:
+    Cancel (the Break key),
+    BackSpace, 
+    Tab, 
+    Return(the Enter key), 
+    Shift_L (any Shift key), 
+    Control_L (any Control key), 
+    Alt_L (any Alt key), 
+    Pause, 
+    Caps_Lock, 
+    Escape, 
+    Prior (Page Up), 
+    Next (Page Down), 
+    End, 
+    Home, 
+    Left, 
+    Up, 
+    Right, 
+    Down, 
+    Print (print screen), 
+    Insert, 
+    Delete, 
+    F1, 
+    F2, 
+    F3, 
+    F4, 
+    F5, 
+    F6, 
+    F7, 
+    F8, 
+    F9, 
+    F10, 
+    F11, 
+    F12, 
+    Num_Lock, 
+    Scroll_Lock,
+
+others:
+    Space,
+    Less (less than sign <)
+
+Bindkeys:
+     "<Key>": a key was pressed down
+     "<KeyRelease>": a key was released
+     "x": x is any capital or lowercase character(others included) which is not special. x was pressed down
+     "<x>": x is a special character. x was pressed down
+     "<KeyRelease-x>": x is any capital or lowercase character except for numbers and others. x was released
+     "<Control-x>": x is any character except numbers and others. Control + x was pressed down
+     "<Control-KeyRelease-x>": x is any character except numbers and others. Control + x was pressed down
+     "<Alt-x>": x is any character except numbers and others. Alt + x was pressed

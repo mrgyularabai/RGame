@@ -1,0 +1,60 @@
+Comprehensive Version
+--------------------------------------
+MainWindow is what make your window and rendering work. It is can be accessed
+with self.MainWindow from everywhere.
+
+You can do these things:
+
+    These if possible should be replaced with Script.Activated, Script.Activate and, Script.Deactivate.
+    self.MainWindow.Exists(x): x is "self." the name of a variable which stores a Script.
+            This checks if the script is doing Render.
+
+    self.MainWindow.Add(x): x is "self." the name of a variable which stores a Script.
+            This makes the script start doing Render. Only do this if 
+            self.MainWindow.Exists(x) is False
+
+    self.MainWindow.Remove(x):  x is "self." the name of a variable which stores a Script.
+            This makes the script stop doing Render. Only do this if 
+            self.MainWindow.Exists(x) is True
+    
+You have these variables which are made by default:
+    FrameRate.Value: Frame rate.
+    WindowTitle: (only change this in MainScript.Main) The window's title.
+    WindowHeight: (only change this in MainScript.Main) The window's height in pixels.
+    WindowWidth: (only change this in MainScript.Main) The window's width in pixels.
+    WindowBackGround: (only change this in MainScript.Main) The window's background color.
+    WindowIcon:  (only change this in MainScript.Main) File path to the icon.
+    FailedRenderFailsafe.Value: How many errors does it accept before crashing (set to 0 to disable crashing).
+    RenderingManager.FailedRenderCount: How many errors have occurred during Render.
+    Appearances: see Appearances.txt
+    Activate: (only change this in MainScript.Main) if False it does not start window.
+
+Concise Version
+--------------------------------------
+MainWindow handles the rendering event loop(on a separate thread), UI(see UserInput.txt) and, the window. 
+It is can be accessed by the attribute self.MainWindow in every script.
+
+Deprecated: use Script.Activated, Script.Activate() and, Script.Deactivate() when possible instead of the methods below
+
+These are its available methods:
+
+    self.MainWindow.Exists(x): x is of type RG_Script. Returns a boolean value which
+            indicates if a script is subscribed or not to this event loop.
+
+    self.MainWindow.Add(x): x is of type RG_Script. Subscribes x to event loop.
+
+    self.MainWindow.Remove(x):  x is of type RG_Script. Unsubscribes x to event loop.
+
+"main only" means that it will only be refreshed to the screen once or applied once directly after MainScript.Main.
+
+You have these variables which are made by default:
+    FrameRate.Value: Frame rate.
+    WindowTitle: (main only) The window's title.
+    WindowHeight: (main only) The window's height in pixels.
+    WindowWidth: (main only) The window's width in pixels.
+    WindowBackGround: (main only) The window's background color.
+    WindowIcon:  (main only) File path to the icon.
+    FailedRenderFailsafe.Value: How the amount of exceptions accepted (set to 0 to accept all exceptions).
+    RenderingManager.FailedRenderCount: The amount of exceptions occurred during Render.
+    Appearances: see Appearances.txt
+    Activate: (main only) if False, it does not start MainWindow.

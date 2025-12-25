@@ -1,0 +1,72 @@
+RGame as a whole is just and object-orientated wrapper for the Tkinter library of python.
+Although it does offer other features like multithreading for physics and error handling.
+It can be imported simply with from RGame import*. Every RGame class has the prefix RG_
+except 'Run'.
+
+RGame expects the user to provide a main function to the Run functor. This main function
+should return something of type: RG_MainScript. The user is supposed to make a class with
+RG_MainScript as its base and override 3 methods: PhysicsTick, Render, Main. Then create
+and return this class in main. Like so:
+
+from RGame import*
+
+class MainScript(RG_MainScript):
+
+    def Main(self):
+        pass
+    
+    def PhysicsTick(self, deltaTime):
+        pass
+    
+    def Render(self):
+        pass
+
+def main():
+    return MainScript()
+
+Run(main)
+
+To run the program run the a python file with the above code in it. If you want to run it
+without a console rename the file to end in .pyw instead of .py . Though beware the program
+will not close after you quit the window to if you run without console you will have to
+manually close the process with task manager.
+
+To Put something on the screen one can use an appearance. This is something that handles
+the tkinter graphics of something on the screen. An Example would be RG_App_Circle.
+
+from RGame import*
+
+class MainScript(RG_MainScript):
+
+    def Main(self):
+        self.circle = RG_App_Circle(self.MainWindow.Screen,
+                                    radius=5,
+                                    color="red",
+                                    outlineColor="black",
+                                    outlineWidth=2)
+        
+        self.midpoint = RG_Point2D(
+            self.MainWindow.WindowWidth/2,
+            self.MainWindow.WindowHeight/2)
+        
+        self.growthSpeed = 0.5
+    
+    def PhysicsTick(self, deltaTime):
+        self.circle.Dimensions.Radius += Decimal(self.growthSpeed*deltaTime)
+        self.circle.OffSet.X = self.circle.Dimensions.Radius
+        self.circle.OffSet.Y = self.circle.Dimensions.Radius
+    
+    def Render(self):
+        self.circle.Render()
+        self.circle.MoveTo(self.midpoint.X, self.midpoint.Y)
+
+def main():
+    return MainScript()
+
+Run(main)
+
+Here we create an appearance which is a circle RG_App_Circle. Give it the tkinter window's canvas
+to draw itself on and then set its attributes (color = "red"...). Then we calculate the midpoint
+of the screen and put it into the class RG_Point2D.
+
+During the PhysicsTick we increase the radius by one and change

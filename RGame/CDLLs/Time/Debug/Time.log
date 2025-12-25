@@ -1,0 +1,4 @@
+﻿  TimeFunctions.cpp
+C:\Users\Main User\source\repos\Time\Time\TimeFunctions.cpp(2,9): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Main User\source\repos\Time\Time\TimeFunctions.cpp(3,9): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Time.vcxproj -> C:\Users\Main User\source\repos\Time\Debug\Time.dll
