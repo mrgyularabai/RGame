@@ -127,17 +127,28 @@ RGame provides several convenient classes that create visual objects on the scre
 
 ## Limitations
 
-Tkinter is not hardware-accelerated → not suitable for high-performance games
-Rendering capped at ~10–15 FPS by default (Python + Tkinter limitation)
-No built-in sound or advanced collision detection (but easy to add)
+- **Performance Constraints**  
+  Tkinter is not hardware-accelerated, so RGame is not suitable for high-performance games, complex 3D graphics, or applications requiring high frame rates.
+
+- **Rendering Speed**  
+  Rendering is intentionally capped at approximately 10–15 FPS by default due to Python's interpreter overhead and Tkinter's limitations. This can be adjusted slightly but remains modest.
+
+- **No Built-in Sound**  
+  Audio support is not included out of the box. Adding sound would require integrating external libraries like `pygame.mixer` or `playsound`.
+
+- **Basic Collision Detection**  
+  No native collision system is provided. Simple bounding-box or distance-based checks can be implemented manually in `PhysicsTick`.
+
+- **Single-Window Only**  
+  The engine is designed around a single Tkinter window. Multi-window or fullscreen modes are not natively supported.
 
 ## Contributing
 Contributions welcome! Especially:
 
-New appearance types (polygon, arc, etc.)
-Better documentation/examples
-Collision system
-Particle system
+- New appearance types (polygon, arc, etc.)
+- Better documentation/examples
+- Collision system
+- Particle system
 
 ## License
 MIT License – feel free to use, modify, and distribute.
