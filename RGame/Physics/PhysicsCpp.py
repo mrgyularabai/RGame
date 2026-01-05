@@ -20,8 +20,9 @@ class RG_CppPhysics(RG_Physics):
     def __init__(self, mainScript:RG_MainScript, interval:float) -> None:
         self._mainScript = mainScript
         mainScriptTick = self._mainScript.tick
-        
-        self.C_Physics = cdll.LoadLibrary(__file__+"\\RGame\\Physics.dll");
+        from pathlib import Path
+        dllPath = Path(__file__).parent / "\\RGame\\Physics.dll"
+        self.C_Physics = cdll.LoadLibrary(dllPath);
         
         self._interval = interval
         
