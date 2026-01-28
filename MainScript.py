@@ -1,5 +1,5 @@
 from Script import*
-from RGameLib import*
+from RGame import*
 
 # This is the rest of the code
 # Do not worry if you do not understand any of it

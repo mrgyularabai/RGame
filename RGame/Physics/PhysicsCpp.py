@@ -21,7 +21,7 @@ class RG_CppPhysics(RG_Physics):
         self._mainScript = mainScript
         mainScriptTick = self._mainScript.tick
         from pathlib import Path
-        dllPath = Path(__file__).parent / "\\RGame\\Physics.dll"
+        dllPath = Path(__file__).parent.parent / "Physics.dll"
         self.C_Physics = cdll.LoadLibrary(dllPath);
         
         self._interval = interval

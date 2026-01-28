@@ -86,7 +86,7 @@ def TimeInit():
     global py;
     try:
         from pathlib import Path
-        dllPath = Path(__file__).parent / "\\RGame\\Time.dll"
+        dllPath = Path(__file__).parent.parent / "Time.dll"
         tim = cdll.LoadLibrary(dllPath)
         tim.Pause.argtypes = [c_double];
         #tim.PauseUntil.argtypes = [c_void_p]

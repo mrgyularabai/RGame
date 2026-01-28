@@ -73,11 +73,13 @@ class RG_MainWindow:
         print("Main\\Start up\\MainWindow\\configuring> Started  | setting  -> Title");
         self.Window.title(self.WindowTitle);
         print("Main\\Start up\\MainWindow\\configuring> Finished | setting  -> Title");
-        #photo = PhotoImage(file = self.WindowIcon);
-        #self.MainWindow.iconphoto(False, photo);
         print("Main\\Start up\\MainWindow\\configuring> Started  | setting  -> Icon");
         if(self.WindowIcon != None):
             self.Window.iconbitmap(self.WindowIcon);
+        else:
+            from pathlib import Path
+            iconPath = Path(__file__).parent.parent.parent.parent / "RGameIcon.ico"
+            self.Window.iconbitmap(iconPath)
         print("Main\\Start up\\MainWindow\\configuring> Finished | setting  -> Icon");
         print("Main\\Start up\\MainWindow\\configuring> Started  | setting  -> Max Size (will be separate to min in a future update)");
         self.Window.maxsize(self.WindowWidth,self.WindowHeight);

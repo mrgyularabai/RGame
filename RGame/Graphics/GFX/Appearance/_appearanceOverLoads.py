@@ -692,10 +692,11 @@ class RG_App_Circle(RG_App_Ellipse):
     
     pass;
 
+from pathlib import Path
 
 class RG_App_Shader(RG_AppearanceType):
     
-    _location:str = "RGame\\RGamePic.png"
+    _location:str = Path(__file__).parent.parent.parent.parent / "RGamePic.png"
     
     @property
     def Location(self):
@@ -704,7 +705,7 @@ class RG_App_Shader(RG_AppearanceType):
     @Location.setter
     def Location(self, fileLocation):
         if (fileLocation is None):
-            fileLocation = "RGame\\RGamePic.png"
+            fileLocation = Path(__file__).parent.parent.parent.parent / "RGamePic.png"
         elif not (type(fileLocation) is str):
             raise RG_TypeError(fileLocation ,
                                 " 'RG_App_Shader' must have a string as the parameter 'fileLocation'.")
